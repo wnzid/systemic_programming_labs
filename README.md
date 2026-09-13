@@ -1,41 +1,42 @@
-# Systemic Programming
+<div align="center">
 
-Coursework and laboratory exercises completed for the **Systemic Programming** course at **Vilnius University**.
+# Systemic Programming Labs
 
-This repository contains my laboratory work, source code, *documentation*, *screenshots*, and related materials produced throughout the course.
+**8086 assembly exercises for the Systemic Programming course at Vilnius University.**
 
-## Laboratory Works
+`x86 Assembly` · `MS-DOS interrupts` · `emu8086`
+
+</div>
+
+This repository collects source code and supporting notes for low-level programming laboratory work. Each lab has its own directory and explains the assignment, implementation constraints, execution steps, and expected output.
+
+## Labs
 
 | Lab | Topic | Status |
 | --- | --- | --- |
-| [Laboratory Work 1.2](./lab-1.2/) | ASCII control codes and MS-DOS interrupts | Completed |
+| [1.2](lab-1.2/) | ASCII control codes, fixed screen positions, and DOS interrupt `21h` | Complete |
 
-More laboratory works will be added throughout the course.
+## Environment
 
-## Development Environment
+The current source targets a DOS-compatible 8086 environment and was assembled and tested with **emu8086**.
 
-The source code is written and edited in **Visual Studio Code**, then assembled, executed, and tested using **emu8086**.
+To run Lab 1.2:
 
-## Technologies
+1. Open `lab-1.2/1.2_lab_work_Islam.asm` in emu8086.
+2. Choose **Compile and Emulate**.
+3. Run the program.
+4. Compare the text positions with the lab README.
 
-- Visual Studio Code — source code editing
-- emu8086 — assembling, emulating, and testing 8086 programs
-- x86 Assembly (8086)
-- MS-DOS interrupts
-- ASCII control codes
+## Repository convention
 
-## Repository Structure
+```text
+lab-<number>/
+├── *.asm       Assembly source
+└── README.md   Task, constraints, execution, and expected output
+```
 
-Each laboratory work is stored in its own directory and may contain:
+Generated emulator artifacts are not tracked because they can be recreated from the source.
 
-- Assembly source code
-- Laboratory documentation
-- Testing screenshots
-- A README describing the task and implementation
+## License
 
-## Author
-
-**Md Nahidul Islam**
-
-Bachelor's in Software Engineering
-Vilnius University
+No license is currently declared. All rights are reserved by default.
