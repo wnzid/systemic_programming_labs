@@ -3,52 +3,44 @@
 
 .data                         ;start data segment
 
-output db 13,10               ;move to line 2
-       db 13,10               ;move to line 3
-       db 13,10               ;move to line 4
-       db 13,10               ;move to line 5
-       db 13,10               ;move to line 6
-       db 13,10               ;move to line 7
-       db 13,10               ;move to line 8
-       db '      Md Nahidul'    ;line 8, position 7. position 7 means 6 spaces before the name
-       db 13,10               ;move to line 9
-       db 13,10               ;move to line 10
-       db 13,10               ;move to line 11
-       db 13,10               ;move to line 12
+;student's name and surname declared in the data segment
+studentname db 'Md Nahidul Islam','$'
 
-       ;lines 12-15, position 2. position 2 means 1 space before surname
-       db ' Islam',13,10      ;line 12
-       db ' Islam',13,10      ;line 13
-       db ' Islam',13,10      ;line 14
-       db ' Islam',13,10      ;line 15
-
-       db 13,10               ;empty line 16, move to line 17
-
-       ;lines 17-19, position 4. position 4 means 3 spaces before the surname and name
-       db '   Islam Md Nahidul',13,10  ;line 17
-       db '   Islam Md Nahidul',13,10  ;line 18
-       db '   Islam Md Nahidul$'       ;line 19
+;13,10 moves to a new line. two pairs place the drawing on line 3, and nine spaces place the first letter in column 10. the letters follow the sequence `MDNAHIDULISLAM`
+floweroutput db 13,10,13,10
+             db '         MDNAH       IDULI',13,10
+             db '         S   LAM   MDN   A',13,10
+             db '         H     ID UL     I',13,10
+             db '         SLA    M M    DNA',13,10
+             db '           HID  ULI  SLA',13,10
+             db '             MMD N AHI',13,10
+             db '               DULIS',13,10
+             db '             LAM M DNA',13,10
+             db '           HID  ULI  SLA',13,10
+             db '         MMD    N A    HID',13,10
+             db '         U     LI SL     A',13,10
+             db '         M   MDN   AHI   D',13,10
+             db '         ULISL       AMMDN','$'
 
 .code                         ;start code segment
 
 main proc                     ;start main procedure
 
-       ;initializing the data segment
-       mov ax, @data
-       mov ds, ax
+    ;initializing the data segment
+    mov ax, @data
+    mov ds, ax
 
-       ;putting the address of the output data block into DX
-       mov dx, offset output
+    ;print the complete flower drawing
+    ;dx contains the address of the output string
+    lea dx, floweroutput
 
-       ;DOS interrupts 21h, function 09h prints
-       ;the string points to by DS:DX until $
-       mov ah, 09h
-       int 21h
+    ;ah = 09h prints a $-terminated string
+    mov ah, 09h
+    int 21h
 
-       ;DOS interrupts 21h, function 4Ch
-       ;terminates the program.
-       mov ax, 4C00h
-       int 21h
+    ;terminate the program and return to MS-DOS
+    mov ax, 4c00h
+    int 21h
 
 main endp                     ;end main procedure
 

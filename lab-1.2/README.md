@@ -1,39 +1,40 @@
 # Laboratory Work 1.2
 
-Laboratory work for the **Systemic Programming** course at **Vilnius University**.
+Laboratory work for the **Systemic Programming** course at **Vilnius University Šiauliai Academy**.
 
 ## Task
 
-The assigned program must:
+The assigned program must draw a **flower ring** using only the letters from the student's name and surname:
 
-1. Print the surname and name `Islam Md Nahidul` starting from **position 4 of line 19**, three times in the same column upward.
-2. Print the surname `Islam` starting from **position 2 of line 12**, four times in the same column downward.
-3. Print the name `Md Nahidul` at **line 8, position 7**.
+`Md Nahidul Islam`
 
-Therefore, the final text appears at:
+The drawing must:
 
-| Text | Lines | Column |
-| --- | --- | ---: |
-| `Md Nahidul` | 8 | 7 |
-| `Islam` | 12–15 | 2 |
-| `Islam Md Nahidul` | 17–19 | 4 |
+- begin from **line 3, column 10**
+- use the letters one by one in the sequence `MDNAHIDULISLAM`
+- repeat the sequence continuously until the drawing is completed
+- use only letters that occur in the student's name and surname
+- not use loops
 
 ## Requirements
 
 The program:
 
-- uses a data block for the output
-- uses ASCII special/control codes
+- uses a data segment for the student's name and surname
+- uses ASCII control codes for screen positioning
+- uses `13,10` for carriage return and line feed
+- uses spaces for horizontal positioning
 - uses MS-DOS interrupts only
-- uses DOS interrupt `21h`
-- uses function `09h` to display the text
+- uses `int 21h`
+- uses function `09h` to display the complete flower drawing
+- uses one output call for the complete drawing
 - does not use loops
 - contains comments explaining the program
-- prints the complete output using one data block
+- uses the student's own name and surname
 
 ## Development Environment
 
-The source code was written and edited in **Visual Studio Code** and the program was assembled, executed, and tested using **emu8086**.
+The source code was written and edited in **Visual Studio Code** and assembled, executed, and tested using **emu8086**.
 
 ## Source File
 
@@ -43,27 +44,26 @@ The source code was written and edited in **Visual Studio Code** and the program
 
 1. Open `1.2_lab_work_Islam.asm` in **emu8086**.
 2. Select **Compile and Emulate**.
-3. Wait for the program to assemble successfully.
-4. Run the program in the emulator.
-5. Verify that the text appears at the required screen positions.
+3. Run the program.
+4. Verify that the flower drawing begins at line 3, column 10.
+5. Verify that the letters follow the sequence `MDNAHIDULISLAM`.
 
-## Expected Output Positions
+## Expected Output
 
-```text
-Line 8,  Column 7  ->       Md Nahidul
+The program produces a flower-shaped ring using the letters of:
 
-Line 12, Column 2  ->  Islam
-Line 13, Column 2  ->  Islam
-Line 14, Column 2  ->  Islam
-Line 15, Column 2  ->  Islam
+`MDNAHIDULISLAM`
 
-Line 17, Column 4  ->    Islam Md Nahidul
-Line 18, Column 4  ->    Islam Md Nahidul
-Line 19, Column 4  ->    Islam Md Nahidul
-```
+The first visible character begins at **line 3, column 10**.
+
+The sequence continues one by one throughout the drawing:
+
+`M D N A H I D U L I S L A M`
+
+After the last letter `M`, the sequence starts again from `M`.
 
 ## Notes
 
-This program is written in **8086 Assembly** and targets a DOS-compatible environment.
+ASCII `13,10` is used for line changes. Two pairs move the output to line 3, while nine spaces place the first character at column 10.
 
-The source code is kept in the repository, while generated build files are not tracked because they can be recreated using emu8086.
+The program is written in **8086 Assembly** for a DOS-compatible environment. It uses MS-DOS interrupt `21h` for output and program termination.
